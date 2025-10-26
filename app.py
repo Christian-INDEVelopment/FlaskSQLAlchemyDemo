@@ -41,7 +41,7 @@ def users():
     age = request.form.get("age")
 
     #Checking the fields to make sure they aren't empty.
-    if username != '' and email != '' and age is not None:
+    if username is not None and email is not None and age is not None:
         #Defines the user, adds it to db, then commits it.
         u = User(username=username, email=email, age=age)
         db.session.add(u)
@@ -62,4 +62,5 @@ def erase(id):
 if __name__ == '__main__':
     with flask_app.app_context():
         db.create_all()
+
     flask_app.run(debug=True)
